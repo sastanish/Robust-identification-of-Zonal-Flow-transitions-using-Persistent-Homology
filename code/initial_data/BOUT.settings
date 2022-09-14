@@ -1,0 +1,139 @@
+append = false		# type: bool, doc: Add new outputs to the end of existing files? If false, overwrite files.
+async_send = false		# type: bool, doc: Whether to use asyncronous MPI sends
+datadir = /sciclone/pscr/sastanish/hw/data/1/1		# type: string
+dump_format = nc		# type: string
+dump_on_restart = true		# type: bool, doc: Write initial state as time point 0?
+incintshear = false		# type: bool
+mxg = 2		# type: int, doc: Number of guard cells on each side in X
+myg = 0		# type: int, doc: Number of guard cells on each side in Y
+non_uniform = true		# type: bool
+nout = 200		# type: int, doc: Number of output steps
+optionfile = BOUT.inp		# type: string
+periodicx = false		# type: bool, doc: Make grid periodic in X?
+restart = false		# type: bool, doc: Load state from restart files?
+restart_format = nc		# type: string
+settingsfile = BOUT.settings		# type: string
+stopcheck = false		# type: bool, doc: Check if a file exists, and exit if it does.
+timestep = 1.		# type: BoutReal, doc: Output time step size
+twistshift = false		# type: bool, doc: Apply a Twist-Shift boundary using ShiftAngle?
+wall_limit = -1		# type: BoutReal, doc: Wall time limit in hours. By default (< 0), no limit
+zmax = 1		# type: BoutReal
+zmin = 0		# type: BoutReal
+
+[all]
+bndry_all = dirichlet_o2		# type: string
+evolve_bndry = false		# type: bool
+function = 0.0		# type: string
+scale = 0.		# type: BoutReal
+
+[fft]
+fft_measure = false		# type: bool, doc: Perform speed measurements to optimise settings?
+fft_measurement_flag = estimate		# type: 20FFT_MEASUREMENT_FLAG, doc: Level speed measurements to optimise FFT settings: [estimate], measure, exhaustive
+
+[hw]
+alpha = 1		# type: BoutReal
+bracket = 2		# type: int
+dn = 1e-4		# type: BoutReal
+dvort = 1e-4		# type: BoutReal
+kappa = 1		# type: BoutReal
+modified = true		# type: bool
+
+[input]
+transform_from_field_aligned = true		# type: bool
+
+[laplace]
+all_terms = true		# type: bool, doc: Include first derivative terms?
+async = true		# type: bool, doc: Use asyncronous MPI send?
+dst = false		# type: bool
+extra_yguards_lower = 0		# type: int
+extra_yguards_upper = 0		# type: int
+filter = 0		# type: BoutReal, doc: Fraction of Z modes to filter out. Between 0 and 1
+flags = 0		# type: int, doc: Flags to control inner and outer boundaries.
+include_yguards = false		# type: bool, doc: Solve Laplacian in Y guard cells?
+low_mem = false		# type: bool
+maxmode = 128		# type: int
+nonuniform = true		# type: bool, doc: Use non-uniform grid corrections? Default is the mesh setting.
+type = cyclic		# type: string
+
+[mesh]
+calcparallelslices_on_communicate = true		# type: bool
+dx = 0.2
+dy = 1.
+dz = 0.2
+extrapolate_x = false		# type: bool
+extrapolate_y = false		# type: bool
+maxregionblocksize = 64		# type: int
+nx = 260
+ny = 1
+nz = 256
+paralleltransform = identity		# type: string
+staggergrids = false		# type: bool
+symmetricglobalx = true		# type: bool
+symmetricglobaly = true		# type: bool
+type = bout		# type: string
+
+[mesh:ddz]
+fft_filter = 0		# type: BoutReal
+
+[n]
+evolve_bndry = false		# type: bool
+
+[output]
+enabled = true		# type: bool
+floats = false		# type: bool
+flush = true		# type: bool
+flushfrequency = 1		# type: int
+guards = true		# type: bool
+init_missing = false		# type: bool
+openclose = true		# type: bool
+parallel = false		# type: bool
+shiftinput = false		# type: bool
+shiftoutput = false		# type: bool
+
+[restart]
+enabled = true		# type: bool
+floats = false		# type: bool
+flush = true		# type: bool
+flushfrequency = 1		# type: int
+guards = true		# type: bool
+init_missing = false		# type: bool
+openclose = true		# type: bool
+parallel = false		# type: bool
+shiftinput = false		# type: bool
+shiftoutput = false		# type: bool
+
+[run]
+finished = Mon Mar  7 10:07:18 2022
+		# not used , from:
+revision = 5772080899e2377e752152bd72bac19dca843890		# not used , from:
+run_id = 5e34904a-19d1-479d-9e1b-d9a1338f1781		# not used , from: Solver
+run_restart_from = zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz		# not used , from: Solver
+started = Mon Mar  7 10:02:40 2022
+		# not used , from:
+version = 4.4.1		# not used , from:
+
+[solver]
+atol = 1e-12		# type: BoutReal
+is_nonsplit_model_diffusive = true		# type: bool, doc: If not a split operator, treat RHS as diffusive?
+mldq = 68		# type: int
+mlkeep = 0		# type: int
+mms = false		# type: bool
+mms_initialise = false		# type: bool
+monitor_timestep = false		# type: bool
+mudq = 68		# type: int
+mukeep = 0		# type: int
+mxstep = 500		# type: int
+nout = 200		# type: int, doc: Number of output steps. Overrides global setting.
+output_step = 1		# type: BoutReal, doc: Output time step size. Overrides global TIMESTEP setting.
+precon_dimens = 50		# type: int
+precon_tol = 0.0001		# type: BoutReal
+rtol = 1e-05		# type: BoutReal
+save_repeat_run_id = false		# type: bool, doc: Write run_id and run_restart_from at every output timestep, to make it easier to concatenate output data sets in time
+timestep = 0.001		# not used , from: /sciclone/pscr/sastanish/hw/data/1/1/BOUT.inp
+type = pvode		# type: string
+use_precon = false		# type: bool
+
+[vort]
+evolve_bndry = false		# type: bool
+function = mixmode(2*pi*x) * mixmode(z)		# type: string
+scale = 0.1		# type: BoutReal
