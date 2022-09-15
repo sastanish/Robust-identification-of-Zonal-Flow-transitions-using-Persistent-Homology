@@ -21,5 +21,5 @@ for a,alf in enumerate(alpha):
     ax.set_ylabel('$V^2$')
     ax.set_xlabel('$k_x$')
     #ax.set_ylim((10**-10,10**-2))
-    plt.savefig(f'figs/{alf}_spec.png')
+    plt.savefig(f'figs/{alf}_spec.svg')
     plt.close()
